@@ -1,7 +1,18 @@
+import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
+import HomePage from './scenes/homePage';
+import LoginPage from './scenes/loginPage';
+import ProfilePage from './scenes/profilePage';
+
 const App = () => {
   return (
     <div className="app">
-      <h1>Sociopedia</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/profile/:userId" element={<ProfilePage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };
