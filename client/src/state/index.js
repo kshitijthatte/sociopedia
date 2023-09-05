@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initalState = {
-  mode: 'light',
+const systemPrefersDark = () =>
+  window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+const initialState = {
+  mode: systemPrefersDark(),
   user: null,
   token: null,
   posts: [],
@@ -9,7 +12,7 @@ const initalState = {
 
 export const authSlice = createSlice({
   name: 'auth',
-  initalState,
+  initialState,
   reducers: {
     setMode: state => {
       state.mode = state.mode === 'light' ? 'dark' : 'light';
